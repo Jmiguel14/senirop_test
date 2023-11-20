@@ -1,4 +1,4 @@
-# senirop_test
+# Senirop test
 This project is a test from the company Senirop for a Full Stack position
 
 ## Requirements
