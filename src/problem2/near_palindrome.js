@@ -63,6 +63,26 @@ Returns: 4
 */
 
 export function minOperationsForNearPalindrome(s) {
+    if (isNearPalindrome(s)) {
+        return 0;
+    }
+    
+    let left = 0;
+    let right = s.length - 1;
+    let operations = 0;
+
+    while (left < right) {
+        if (s[left] !== s[right]) {
+            operations++;
+        }
+        left++;
+        right--;
+    }
+
+    return operations;
+}
+
+function isNearPalindrome(s) {
     const charCount = {};
     for (const char of s) {
         charCount[char] = (charCount[char] || 0) + 1;
@@ -70,14 +90,13 @@ export function minOperationsForNearPalindrome(s) {
 
     let oddCount = 0;
   
-    console.log(charCount)
     for (let count of Object.values(charCount)) {
       if (count % 2 !== 0) {
         oddCount++;
       }
     }
 
-    return Math.max(0, oddCount - 1);
+    return oddCount <= 1;
 }
 
   
